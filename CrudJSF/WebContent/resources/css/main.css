@@ -35,6 +35,31 @@
     border-top: 1px solid #BBBBBB;
 }
 
-.content {
-	background: none repeat scroll 0 0 #ADD8E6;
+body {
+	background-color: #e7e7e7;
+}
+
+.login {
+	width: 100%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.my-btn-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-el {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.panel {	
+	margin-top: 10% !important;
+}
+
+.panel-body {
+	background-color: #e7e7e7;	
 }

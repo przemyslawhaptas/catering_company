@@ -5,28 +5,30 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    <h:outputStylesheet library="css" name="main.css" />
 </h:head>
-<h:body>
+<h:body>	
 	<ui:composition template="/resources/html/layout.xhtml">
     	<ui:define name="content">
-			<p>Login to access secure pages:</p>
+    	
+			<div class="panel panel-default">
+		  		<div class="panel-body">
+		  			<form method="post" action="j_security_check" class="login">
+		  				<h:messages layout="table" errorStyle="background: #AFEEEE;" infoStyle="background: #AFEEEE;" globalOnly="true" />
+		  				<div class="input-group login-el">
+		  					<input type="text" id="j_username" name="j_username" class="form-control" placeholder="e-mail" aria-describedby="sizing-addon1" />
+		  				</div>
+		  				<br />		  				
+		  				<div class="input-group login-el">		
+	  						<input type="password" id="j_password" name="j_password" class="form-control" placeholder="password" aria-describedby="sizing-addon1" />
+  						</div>	
+  						<br />	
+  						<div class="input-group my-btn-center">
+		  				<input type="submit" name="submit" value="Login" class="btn btn-default"/>
+		  				</div>
+					</form>
+				</div>
+			</div>	
 			
-	    	<form method="post" action="j_security_check">
-		        <h:messages layout="table" errorStyle="background: #AFEEEE;"
-		            infoStyle="background: #AFEEEE;" globalOnly="true" />
-		        <h:panelGrid columns="2">
-		            <h:outputLabel value="e-mail: " />
-		            <input type="text" id="j_username" name="j_username" />
-		            <h:outputLabel value="password: " />
-		            <input type="password" id="j_password" name="j_password" />
-		            <h:outputText value="" />
-		            <h:panelGrid columns="1">
-		                <input type="submit" name="submit" value="Login" />
-		            </h:panelGrid>
-		        </h:panelGrid>
-		        <br />
-	    	</form>
     	</ui:define>
     </ui:composition>
 </h:body>
