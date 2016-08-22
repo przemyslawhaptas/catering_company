@@ -3,18 +3,18 @@
  <PROCESS-ITEM NAME="rules:" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="logout::#pages#protected#user#listAllDogs.xhtml" NAME="output"
-    PATH="/pages/protected/user/listAllDogs.xhtml"
-    TARGET="rules:#pages#protected#user#listAllDogs.xhtml"
+    ID="logout::#pages#protected#client#listAllDogs.xhtml" NAME="output"
+    PATH="/pages/protected/client/listAllDogs.xhtml"
+    TARGET="rules:#pages#protected#client#listAllDogs.xhtml"
     TITLE="logout" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules::1" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="listAllDogs::#pages#protected#user#listAllDogs.xhtml"
-    NAME="output" PATH="/pages/protected/user/listAllDogs.xhtml"
-    TARGET="rules:#pages#protected#user#listAllDogs.xhtml"
+    ID="listAllDogs::#pages#protected#client#listAllDogs.xhtml"
+    NAME="output" PATH="/pages/protected/client/listAllDogs.xhtml"
+    TARGET="rules:#pages#protected#client#listAllDogs.xhtml"
     TITLE="listAllDogs" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
@@ -47,8 +47,8 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#protected#admin#updateDog.xhtml"
   PATH="/pages/protected/admin/updateDog.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#pages#protected#user#listAllDogs.xhtml"
-  PATH="/pages/protected/user/listAllDogs.xhtml" SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#client#listAllDogs.xhtml"
+  PATH="/pages/protected/client/listAllDogs.xhtml" SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#protected#admin#createDog.xhtml"
   PATH="/pages/protected/admin/createDog.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#protected#admin#deleteDog.xhtml"

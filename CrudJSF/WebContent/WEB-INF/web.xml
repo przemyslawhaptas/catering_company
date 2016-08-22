@@ -7,7 +7,7 @@
     <display-name>CrudJSF</display-name>
     
     <welcome-file-list>
-        <welcome-file>pages/protected/user/listAllDogs.xhtml</welcome-file>
+        <welcome-file>pages/protected/client/listAllDogs.xhtml</welcome-file>
     </welcome-file-list>
     
     <servlet>
@@ -34,11 +34,11 @@
     </security-constraint>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Restricted Area - USER and ADMIN</web-resource-name>
-            <url-pattern>/pages/protected/user/*</url-pattern>
+            <web-resource-name>Restricted Area - CLIENT and ADMIN</web-resource-name>
+            <url-pattern>/pages/protected/client/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>USER</role-name>
+            <role-name>CLIENT</role-name>
             <role-name>ADMIN</role-name>
         </auth-constraint>
     </security-constraint>
@@ -57,6 +57,15 @@
         <role-name>ADMIN</role-name>
     </security-role>
     <security-role>
-        <role-name>USER</role-name>
+        <role-name>CLIENT</role-name>
+    </security-role>
+    <security-role>
+        <role-name>MANAGER</role-name>
+    </security-role>
+    <security-role>
+        <role-name>STAFF</role-name>
+    </security-role>
+    <security-role>
+        <role-name>DELIVERY</role-name>
     </security-role>
 </web-app>
