@@ -8,6 +8,10 @@
     <h:outputStylesheet library="css" name="main.css" />
 </h:head>
 <h:body>
-    #{msgs.loginErrorMessage}
+	<ui:composition template="/resources/html/layout.xhtml">
+    	<ui:define name="content">
+    		#{msgs.loginErrorMessage}
+       	</ui:define>
+    </ui:composition>
 </h:body>
 </html>
