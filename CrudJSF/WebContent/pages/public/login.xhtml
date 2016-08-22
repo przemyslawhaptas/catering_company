@@ -7,28 +7,9 @@
 <h:head>
 </h:head>
 <h:body>	
-	<ui:composition template="/resources/html/layout.xhtml">
+	<ui:composition template="/WEB-INF/layout.xhtml">
     	<ui:define name="content">
-    	
-			<div class="panel panel-default">
-		  		<div class="panel-body">
-		  			<form method="post" action="j_security_check" class="login">
-		  				<h:messages layout="table" errorStyle="background: #AFEEEE;" infoStyle="background: #AFEEEE;" globalOnly="true" />
-		  				<div class="input-group login-el">
-		  					<input type="text" id="j_username" name="j_username" class="form-control" placeholder="e-mail" aria-describedby="sizing-addon1" />
-		  				</div>
-		  				<br />		  				
-		  				<div class="input-group login-el">		
-	  						<input type="password" id="j_password" name="j_password" class="form-control" placeholder="password" aria-describedby="sizing-addon1" />
-  						</div>	
-  						<br />	
-  						<div class="input-group my-btn-center">
-		  				<input type="submit" name="submit" value="Login" class="btn btn-default"/>
-		  				</div>
-					</form>
-				</div>
-			</div>	
-			
+    		<ui:include src="/WEB-INF/partials/loginBody.xhtml" />			
     	</ui:define>
     </ui:composition>
 </h:body>

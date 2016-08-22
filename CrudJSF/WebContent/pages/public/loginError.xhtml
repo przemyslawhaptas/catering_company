@@ -8,10 +8,11 @@
     <h:outputStylesheet library="css" name="main.css" />
 </h:head>
 <h:body>
-	<ui:composition template="/resources/html/layout.xhtml">
+	<ui:composition template="/WEB-INF/layout.xhtml">
     	<ui:define name="content">
-    		#{msgs.loginErrorMessage}
-       	</ui:define>
-    </ui:composition>
+    		<div class="alert alert-danger" role="alert">#{msgs.loginErrorMessage}</div>
+    		<ui:include src="/WEB-INF/partials/loginBody.xhtml" />
+   		</ui:define>
+	 </ui:composition>
 </h:body>
 </html>

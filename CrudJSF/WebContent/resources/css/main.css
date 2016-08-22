@@ -63,3 +63,7 @@ body {
 .panel-body {
 	background-color: #e7e7e7;	
 }
+
+.error {
+	background-color: #bc7c7c;	
+}
