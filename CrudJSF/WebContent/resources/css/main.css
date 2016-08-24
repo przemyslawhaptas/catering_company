@@ -35,6 +35,8 @@
     border-top: 1px solid #BBBBBB;
 }
 
+ /* loggin pages */
+
 body {
 	background-color: #e7e7e7;
 }
@@ -50,6 +52,12 @@ body {
 	margin-right: auto;
 }
 
+.main-panel {	
+	margin-top: 90px;
+	margin-bottom: 90px !important;
+	background-color: #e7e7e7;	
+}
+
 .login-el {
 	width: 50%;
 	margin-left: auto;
@@ -57,13 +65,22 @@ body {
 }
 
 .panel {	
-	margin-top: 10% !important;
-}
-
-.panel-body {
+	margin-top: 30px !important;
+	margin-bottom: 30px !important;
 	background-color: #e7e7e7;	
 }
 
 .error {
 	background-color: #bc7c7c;	
 }
+
+ /* start pages */
+ 
+ .full-width-btn {
+ 	width: 100% !important;
+ }
+ 
+ /* landing page */
+ h1.logo {
+ 	text-align: center;
+ }

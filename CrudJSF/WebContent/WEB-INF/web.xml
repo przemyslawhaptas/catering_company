@@ -7,7 +7,7 @@
     <display-name>CrudJSF</display-name>
     
     <welcome-file-list>
-        <welcome-file>pages/protected/client/listAllDogs.xhtml</welcome-file>
+        <welcome-file>/pages/public/landingPage.xhtml</welcome-file>
     </welcome-file-list>
     
     <servlet>
@@ -25,7 +25,7 @@
  <!-- Protected area definition -->
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Restricted Area - ADMIN Only</web-resource-name>
+            <web-resource-name>Admins Only</web-resource-name>
             <url-pattern>/pages/protected/admin/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
@@ -34,12 +34,20 @@
     </security-constraint>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Restricted Area - CLIENT and ADMIN</web-resource-name>
+            <web-resource-name>Clients Only</web-resource-name>
             <url-pattern>/pages/protected/client/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>CLIENT</role-name>
-            <role-name>ADMIN</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Logged Users Only</web-resource-name>
+            <url-pattern>/pages/protected/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
         </auth-constraint>
     </security-constraint>
  

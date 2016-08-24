@@ -2,7 +2,7 @@
  
 <jboss-web>
     <!-- URL to access the web module -->
-    <context-root>CrudJSF</context-root>
+    <context-root>/a</context-root>
  
     <!-- Realm that will be used -->
     <security-domain>java:/jaas/CrudJSFRealm</security-domain>

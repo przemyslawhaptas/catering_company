@@ -37,6 +37,10 @@ public class UserMB {
         getRequest().getSession().invalidate();
         return "logout";
     }
+    
+    public String getUserRoleLowercase() {
+    	return getUser().getRole().toLowerCase();
+    }
  
     private HttpServletRequest getRequest() {
         return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
