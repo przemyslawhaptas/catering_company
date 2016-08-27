@@ -12,6 +12,7 @@ import com.model.Dish;
 public class DishFacadeImp implements DishFacade {
 	
 	private static final int MAX_DESCRIPTION_LENGTH = 300;
+	private static final int MAX_NAME_LENGTH = 30;
  
     @EJB
     private DishDAO dishDAO;
@@ -44,28 +45,32 @@ public class DishFacadeImp implements DishFacade {
     public List<Dish> findAll() {
         return dishDAO.findAll();
     }
- 
+
     private void validate(Dish dish){
-        boolean hasError = false;
+        String error = null;
  
-        if(dish == null){
-            hasError = true;
+        if (dish == null){
+            error = "dish == null";
         }
  
         if (dish.getName() == null || "".equals(dish.getName().trim())){
-            hasError = true;
+            error = "dish.getName() == null || \"\".equals(dish.getName().trim())";
+        }
+        
+        if (dish.getName().length() > MAX_NAME_LENGTH) {
+        	error = "dish.getName().length() > MAX_NAME_LENGTH";
         }
         
         if (dish.getDescription().length() > MAX_DESCRIPTION_LENGTH) {
-            hasError = true;
+            error = "dish.getDescription().length() > MAX_DESCRIPTION_LENGTH";
         }
  
         if (dish.getQuantity() < 0){
-            hasError = true;
+            error = "dish.getQuantity() < 0";
         }
  
-        if (hasError){
-            throw new IllegalArgumentException("The dog is missing data. Check the name and weight, they should have value.");
+        if (error != null){
+            throw new IllegalArgumentException("Validation failed: " + error);
         }
     }
 }

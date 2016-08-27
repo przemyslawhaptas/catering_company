@@ -6,20 +6,20 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
  
-import com.facade.DishFacade;
-import com.model.Dish;
+import com.facade.CategoryFacade;
+import com.model.Category;
  
 @ManagedBean
 @RequestScoped
-public class DishMB {
+public class CategoryMB {
  
     @EJB
-    private DishFacade dishFacade;
+    private CategoryFacade categoryFacade;
     
     private static final String MENU = "menu";
  
-    public List<Dish> getAllDishes() {
-        return dishFacade.findAll();
+    public List<Category> getAllCategories() {
+        return categoryFacade.findAll();
     }
  
     public String menu(){

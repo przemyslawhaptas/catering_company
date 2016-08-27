@@ -11,15 +11,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "DISHES")
 public class Dish {
- 
+	 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
     private String name;
     private String description;
+    
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    
     private double price;
     private int quantity;
  
