@@ -16,6 +16,10 @@ public interface CategoryFacade {
     public abstract void delete(Category category);
  
     public abstract Category find(int entityID);
+    
+    public abstract Category findReference(int entityID);
  
     public abstract List<Category> findAll();
+    
+    public abstract List<String> pluckColumn(String columnName);
 }

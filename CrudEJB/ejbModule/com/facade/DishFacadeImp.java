@@ -64,6 +64,10 @@ public class DishFacadeImp implements DishFacade {
         if (dish.getDescription().length() > MAX_DESCRIPTION_LENGTH) {
             error = "dish.getDescription().length() > MAX_DESCRIPTION_LENGTH";
         }
+        
+        if (dish.getCategory() == null) {
+        	error = "dish.getCategory() == null";
+        }
  
         if (dish.getQuantity() < 0){
             error = "dish.getQuantity() < 0";

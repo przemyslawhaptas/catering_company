@@ -55,9 +55,9 @@ public class Category {
 	@Override
     public boolean equals(Object obj) {
  
-        if(obj instanceof Dish){
-            Dish dish = (Dish) obj;
-            return dish.getId() == getId();
+        if(obj instanceof Category){
+            Category category = (Category) obj;
+            return category.getId() == getId();
         }
  
         return false;

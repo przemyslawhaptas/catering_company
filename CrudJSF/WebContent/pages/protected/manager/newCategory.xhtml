@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>	
+	<ui:composition template="/WEB-INF/layout.xhtml">
+    	<ui:define name="content">
+       		    <h:form>
+			        <h:messages/>
+			 
+			        <h:panelGrid>
+			            <div>
+				            <h:outputLabel for="categoryName" value="#{msgs.categoryName}" />
+				            <h:inputText id="categoryName" value="#{categoryMB.category.name}" required="true" requiredMessage="#{msgs.categoryNameRequired}" />
+				 	    </div>
+			            <div>
+		          			<h:commandButton action="#{categoryMB.menu()}" value="#{msgs.cancel}" immediate="true" />
+     			            <h:commandButton action="#{categoryMB.createCategory()}" value="#{msgs.create}" />
+            			</div>
+			        </h:panelGrid>
+			        <br/>
+			    </h:form>	
+    	</ui:define>
+    </ui:composition>
+</h:body>
+</html>

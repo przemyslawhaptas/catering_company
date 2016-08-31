@@ -17,11 +17,15 @@
 			                #{categoryDish.name}
 			            </h:column>
 			            <h:column>
-			                #{categoryDish.price}
+			            	<h:outputText value="#{categoryDish.price}">
+      				 	    	<f:convertNumber currencyCode="USD" type="currency" />
+  				 	    	</h:outputText>
 			            </h:column>
        				</h:dataTable>     
 	            </h:column>
 	        </h:dataTable>
+			<h:link styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.addDish}" outcome="newDish"></h:link>
+			<h:link styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.addCategory}" outcome="newCategory"></h:link>
     	</ui:define>
     </ui:composition>
 </h:body>

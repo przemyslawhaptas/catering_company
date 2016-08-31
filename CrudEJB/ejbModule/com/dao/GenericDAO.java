@@ -38,6 +38,10 @@ public abstract class GenericDAO<T> {
     public T find(int entityID) {
         return em.find(entityClass, entityID);
     }
+    
+    public T findReference(int entityID) {
+        return em.getReference(entityClass, entityID);
+    }
  
     // Using the unchecked because JPA does not have a
     // em.getCriteriaBuilder().createQuery()<T> method
@@ -94,6 +98,15 @@ public abstract class GenericDAO<T> {
         }
  
         return results;
+    }
+    
+    // Using the unchecked because JPA does not have a
+    // em.getCriteriaBuilder().createQuery()<T> method
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public List<String> pluckColumn(String columnName) {
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass).get(columnName)).distinct(true);
+        return em.createQuery(cq).getResultList();
     }
     
     private void populateQueryParameters(Query query, Map<String, Object> parameters) {

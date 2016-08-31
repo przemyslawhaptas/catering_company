@@ -39,10 +39,20 @@ public class CategoryFacadeImp implements CategoryFacade {
     public Category find(int entityID) {
         return categoryDAO.find(entityID);
     }
+    
+    @Override
+    public Category findReference(int entityID) {
+        return categoryDAO.findReference(entityID);
+    }
  
     @Override
     public List<Category> findAll() {
         return categoryDAO.findAll();
+    }
+    
+    @Override
+    public List<String> pluckColumn(String columnName) {
+    	return categoryDAO.pluckColumn(columnName);
     }
  
     private void validate(Category category){
