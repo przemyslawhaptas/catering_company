@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>	
+	<ui:composition template="/WEB-INF/layout.xhtml">
+    	<ui:define name="content">
+       		    <h:form>
+			        <h:messages/>
+			 
+			        <h:panelGrid>
+			            <div>
+				            <h:outputLabel for="dishName" value="#{msgs.dishName}" />
+				            <h:inputText id="dishName" value="#{dishMB.dish.name}" required="true" requiredMessage="#{msgs.dishNameRequired}" />
+				 	    </div>
+				 	    <div>
+				            <h:outputLabel for="dishDescription" value="#{msgs.dishDescription}" />
+				            <h:inputTextarea id="dishDescription" value="#{dishMB.dish.description}" />
+			            </div>
+   				 	    <div>
+				            <h:outputLabel for="dishPrice" value="#{msgs.dishPrice}" required="true" requiredMessage="#{msgs.dishPriceRequired}" />
+				            <h:inputTextarea id="dishPrice" value="#{dishMB.dish.price}" />
+			            </div>
+						<div>			           
+				            <h:outputLabel for="dishCategory" value="#{msgs.dishCategory}" />
+							<h:selectOneMenu id="dishCategory" value="#{dishMB.dish.category}" required="true" requiredMessage="#{msgs.dishCategoryRequired}">
+								<f:converter binding="#{categoryConverter}" />			
+							    <f:selectItems value="#{categoryMB.allCategories}" var="category" itemLabel="#{category.name}" itemValue="#{category}"/>   							
+							</h:selectOneMenu>
+						</div>
+			            <div>
+		          			<h:commandButton action="#{categoryMB.menu()}" value="#{msgs.cancel}" immediate="true" />
+     			            <h:commandButton action="#{dishMB.createDish()}" value="#{msgs.create}" />
+            			</div>
+			        </h:panelGrid>
+			        <br/>
+			    </h:form>	
+    	</ui:define>
+    </ui:composition>
+</h:body>
+</html>

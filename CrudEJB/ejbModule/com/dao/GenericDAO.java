@@ -38,6 +38,10 @@ public abstract class GenericDAO<T> {
     public T find(int entityID) {
         return em.find(entityClass, entityID);
     }
+    
+    public T findReference(int entityID) {
+        return em.getReference(entityClass, entityID);
+    }
  
     // Using the unchecked because JPA does not have a
     // em.getCriteriaBuilder().createQuery()<T> method
@@ -72,6 +76,39 @@ public abstract class GenericDAO<T> {
         return result;
     }
  
+    // Using the unchecked because JPA does not have a
+    // ery.getSingleResult()<T> method
+    @SuppressWarnings("unchecked")
+    protected List<T> findManyResults(String namedQuery, Map<String, Object> parameters) {
+        List<T> results = null; //TOO: check if not "List"
+ 
+        try {
+            Query query = em.createNamedQuery(namedQuery);
+ 
+            // Method that will populate parameters if they are passed not null and empty
+            if (parameters != null && !parameters.isEmpty()) {
+                populateQueryParameters(query, parameters);
+            }
+ 
+            results = query.getResultList();
+ 
+        } catch (Exception e) {
+            System.out.println("Error while running query: " + e.getMessage());
+            e.printStackTrace();
+        }
+ 
+        return results;
+    }
+    
+    // Using the unchecked because JPA does not have a
+    // em.getCriteriaBuilder().createQuery()<T> method
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public List<String> pluckColumn(String columnName) {
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass).get(columnName)).distinct(true);
+        return em.createQuery(cq).getResultList();
+    }
+    
     private void populateQueryParameters(Query query, Map<String, Object> parameters) {
  
         for (Entry<String, Object> entry : parameters.entrySet()) {
