@@ -1,6 +1,7 @@
 package com.model;
  
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ public class Dish {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
+    @Column(unique = true)
     private String name;
     private String description;
     

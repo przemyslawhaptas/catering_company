@@ -21,5 +21,7 @@ public interface CategoryFacade {
  
     public abstract List<Category> findAll();
     
-    public abstract List<String> pluckColumn(String columnName);
+    public abstract List<String> getAllCategoryNames();
+    
+    public abstract List<Category> getMenu();
 }

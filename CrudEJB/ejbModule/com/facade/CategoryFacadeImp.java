@@ -51,8 +51,13 @@ public class CategoryFacadeImp implements CategoryFacade {
     }
     
     @Override
-    public List<String> pluckColumn(String columnName) {
-    	return categoryDAO.pluckColumn(columnName);
+    public List<String> getAllCategoryNames() {
+    	return categoryDAO.pluckColumn("name");
+    }
+    
+    @Override
+    public List<Category> getMenu() {
+    	return categoryDAO.getMenu();
     }
  
     private void validate(Category category){

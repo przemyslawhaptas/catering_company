@@ -44,8 +44,12 @@ public class CategoryMB extends ApplicationMB {
         return categoryFacade.findAll();
     }
     
+    public List<Category> getMenu() {
+    	return categoryFacade.getMenu();
+    }
+    
     public List<String> getAllCategoryNames() {
-    	return categoryFacade.pluckColumn("name");
+    	return categoryFacade.getAllCategoryNames();
     }
     
     // Controller methods

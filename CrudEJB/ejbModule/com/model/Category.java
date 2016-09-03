@@ -2,22 +2,28 @@ package com.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
  
 @Entity
 @Table(name = "CATEGORIES")
+@NamedQuery(name = "Category.getMenu", query = "select distinct c from Category c right outer join fetch c.dishes")
 public class Category {
 	    
-    @Id
+    public static final String MENU_QUERY = "Category.getMenu";
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
+    @Column(unique = true)
     private String name;
     
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
