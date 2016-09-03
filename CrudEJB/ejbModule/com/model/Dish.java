@@ -1,6 +1,5 @@
 package com.model;
  
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,24 +9,33 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.google.gson.annotations.Expose;
  
 @Entity
 @Table(name = "DISHES")
 public class Dish {
-	 
+	
+	@Expose
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
+	@Expose
     @Column(unique = true)
     private String name;
+	
+	@Expose
     private String description;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private Category category;
     
+    @Expose
     private double price;
+    
+    @Expose
     private int quantity;
  
     public int getId() {

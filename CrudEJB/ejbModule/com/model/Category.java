@@ -7,26 +7,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.google.gson.annotations.Expose;
  
 @Entity
 @Table(name = "CATEGORIES")
 @NamedQuery(name = "Category.getMenu", query = "select distinct c from Category c right outer join fetch c.dishes")
 public class Category {
-	    
     public static final String MENU_QUERY = "Category.getMenu";
 
+    @Expose
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
+    @Expose
     @Column(unique = true)
     private String name;
     
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @Expose
+    @OneToMany(mappedBy = "category")
     private List<Dish> dishes;
  
     public int getId() {

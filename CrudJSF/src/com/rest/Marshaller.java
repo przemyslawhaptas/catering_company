@@ -9,7 +9,9 @@ public class Marshaller {
 	
 	public Marshaller() {
 		GsonBuilder builder = new GsonBuilder();
-		builder.setDateFormat("yyy-MM-dd'T'HH:mm:ss.SSS'Z'"); // ISO8601 / UTC
+		builder.setPrettyPrinting();
+		builder.serializeNulls();
+		builder.excludeFieldsWithoutExposeAnnotation();
 		gson = builder.create();
 	}
 	
