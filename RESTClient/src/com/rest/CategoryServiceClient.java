@@ -11,10 +11,10 @@ import javax.ws.rs.core.MediaType;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 
-public class MenuServiceClient {
+public class CategoryServiceClient {
 	public static void main(String[] args) {
 		try {
-			ClientRequest request = new ClientRequest("http://localhost:8080/CrudJSF/rest/menuService/menu");
+			ClientRequest request = new ClientRequest("http://localhost:8080/CrudJSF/rest/category");
 			request.accept(MediaType.APPLICATION_JSON);
 			ClientResponse<String> response = request.get(String.class);
 		

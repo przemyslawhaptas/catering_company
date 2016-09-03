@@ -10,22 +10,27 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.facade.CategoryFacade;
+import com.google.gson.Gson;
+import com.marshaller.GsonFactory;
+import com.marshaller.Marshaller;
 import com.model.Category;
 
-@Path("/menuService")
-public class MenuService {
+@Path("category")
+public class CategoryService {
 	
 	@EJB
 	private CategoryFacade categoryFacade;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("menu")
-	public Response getMenu() {
-		Marshaller marshaller = new Marshaller();
+	@Path("/")
+	public Response index() {
+		Gson gson = new GsonFactory().build();
+		Marshaller marshaller = new Marshaller(gson);
 		List<Category> menu = categoryFacade.getMenu();
-		String menuJSON = marshaller.toJSONString(menu);
+		String menuJSON = marshaller.toJson(menu);
 				
 		return Response.ok(menuJSON).build();
 	}
+
 }
