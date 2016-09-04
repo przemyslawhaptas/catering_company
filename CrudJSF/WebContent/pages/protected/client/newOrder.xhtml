@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>	
+	<ui:composition template="/WEB-INF/layout.xhtml">
+    	<ui:define name="content">
+       		<h:dataTable value="#{categoryMB.menu}" var="category" styleClass="table" headerClass="tableColumnsHeader" >
+	           	<h:column>
+	                <h1>#{category.name}</h1>
+	 				<h:dataTable value="#{category.dishes}" var="categoryDish" styleClass="table" headerClass="tableColumnsHeader" rowClasses="tableFirstLine,tableNextLine" >
+			            <h:column>				 
+			                #{categoryDish.name}
+			            </h:column>
+			            <h:column>
+			            	<h:outputText value="#{categoryDish.price}">
+      				 	    	<f:convertNumber currencyCode="USD" type="currency" />
+  				 	    	</h:outputText>
+			            </h:column>
+       				</h:dataTable>     
+	            </h:column>
+	        </h:dataTable>
+			<h:link styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.addDish}" outcome="newDish"></h:link>
+			<h:link styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.addCategory}" outcome="newCategory"></h:link>
+    	</ui:define>
+    </ui:composition>
+</h:body>
+</html>
