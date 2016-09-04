@@ -1,9 +1,12 @@
 package com.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,9 @@ public class Order {
 	private double price;
 	
 	private String status = STATUSES[0];
+	
+	@OneToMany(mappedBy = "order")
+	private List<OrderedDish> orderedDishes;
  
     public int getId() {
         return id;
@@ -45,6 +51,16 @@ public class Order {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+
+	public List<OrderedDish> getOrderedDishes() {
+		return orderedDishes;
+	}
+	
+
+	public void setOrderedDishes(List<OrderedDish> orderedDishes) {
+		this.orderedDishes = orderedDishes;
 	}
 	
 
