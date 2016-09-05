@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Order {
 	
 	private String status = STATUSES[0];
 	
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
 	private List<OrderedDish> orderedDishes;
  
     public int getId() {

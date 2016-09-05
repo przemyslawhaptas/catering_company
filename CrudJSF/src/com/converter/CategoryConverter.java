@@ -26,14 +26,11 @@ public class CategoryConverter implements Converter {
 		Category result = categoryFacade.find(Integer.parseInt(id));
 		if (result == null) {
 			try {
-				throw new Exception("dupa");
+				throw new Exception("Category not found");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-//		System.out.println("categoryFacade: " + categoryFacade);
-//		System.out.println("Integer.parseInt(id): " + Integer.parseInt(id));
-//		System.out.println("result: " + result);
 		
 		return result;
 	}
