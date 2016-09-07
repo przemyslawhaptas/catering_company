@@ -7,7 +7,7 @@
     border-bottom: 1px solid #BBBBBB;
     padding: 16px;
 }
- 
+
 .tableFirstLine {
     background: none repeat scroll 0 0 #F9F9F9;
     border-top: 1px solid #BBBBBB;
@@ -69,15 +69,21 @@ body {
 
 .error {
 	background-color: #bc7c7c;	
+	font-weight: bold;
 }
 
- /* start pages */
- 
- .full-width-btn {
- 	width: 100% !important;
- }
- 
- /* landing page */
- h1.logo {
- 	text-align: center;
- }
+/* start pages */
+
+.full-width-btn {
+	width: 100% !important;
+}
+
+/* landing page */
+h1.logo {
+	text-align: center;
+}
+
+/* payment page */
+.total {
+	text-align: right;
+}

@@ -39,32 +39,26 @@ public class Order {
 		return price;
 	}
     
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
 
 	public String getStatus() {
 		return status;
 	}
 	
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
 	
-
 	public List<OrderedDish> getOrderedDishes() {
 		return orderedDishes;
 	}
 	
-
 	public void setOrderedDishes(List<OrderedDish> orderedDishes) {
 		this.orderedDishes = orderedDishes;
 	}
 	
-
 	@Override
     public int hashCode() {
         return getId();

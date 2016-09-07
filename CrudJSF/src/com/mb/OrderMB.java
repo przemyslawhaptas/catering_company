@@ -17,7 +17,7 @@ import com.model.OrderedDish;
  
 @ManagedBean
 @RequestScoped
-public class OrderMB {
+public class OrderMB extends ApplicationMB {
     
 	@EJB
 	private DishFacade dishFacade;
@@ -28,6 +28,10 @@ public class OrderMB {
     private Map<Integer, Boolean> selectedDishIds = new HashMap<Integer, Boolean>();
     
     private Order order;
+    
+    // Controller actions
+    
+    private static final String PAYMENT = "newPayment";
         
     // Property access methods
 	
@@ -56,8 +60,9 @@ public class OrderMB {
 		order.setPrice(countPrice(order));
 		
 		orderFacade.save(order);
+		storeInSession("order", order);
 		
-		return null;
+		return PAYMENT;
 	}
 	
 	private List<OrderedDish> buildOrderedDishes(Order order, Map<Integer, Boolean> selectedDishIds) {

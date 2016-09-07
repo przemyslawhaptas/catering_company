@@ -10,28 +10,26 @@
 	<ui:composition template="/WEB-INF/layout.xhtml">
     	<ui:define name="content">
     		<h:form>
-       		<h:dataTable value="#{categoryMB.menu}" var="category" styleClass="table" headerClass="tableColumnsHeader" >
-	           	<h:column>
-	                <h1>#{category.name}</h1>
-	 				<h:dataTable value="#{category.dishes}" var="dish" styleClass="table" headerClass="tableColumnsHeader" rowClasses="tableFirstLine,tableNextLine" >
-			            <h:column>				 
-			                #{dish.name}
-			            </h:column>
-			            <h:column>
-			            	<h:outputText value="#{dish.price}">
-      				 	    	<f:convertNumber currencyCode="USD" type="currency" />
-  				 	    	</h:outputText>
-			            </h:column>		 
-			            <h:column>
-							<h:selectBooleanCheckbox value="#{orderMB.selectedDishIds[dish.id]}" />
-    					</h:column>
-       				</h:dataTable>     
-	            </h:column>
-	        </h:dataTable>
-	        
-			<h:commandButton styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.order}" action="#{orderMB.create}">
-				<f:ajax render=":orderSummary" execute="@form"/>
-			</h:commandButton>
+	       		<h:dataTable value="#{categoryMB.menu}" var="category" styleClass="table" headerClass="tableColumnsHeader" >
+		           	<h:column>
+		                <h1>#{category.name}</h1>
+		 				<h:dataTable value="#{category.dishes}" var="dish" styleClass="table" headerClass="tableColumnsHeader" rowClasses="tableFirstLine,tableNextLine" >
+				            <h:column>				 
+				                #{dish.name}
+				            </h:column>
+				            <h:column>
+				            	<h:outputText value="#{dish.price}">
+	      				 	    	<f:convertNumber currencyCode="USD" type="currency" />
+	  				 	    	</h:outputText>
+				            </h:column>		 
+				            <h:column>
+								<h:selectBooleanCheckbox value="#{orderMB.selectedDishIds[dish.id]}" />
+	    					</h:column>
+	       				</h:dataTable>     
+		            </h:column>
+		        </h:dataTable>
+		        
+				<h:commandButton styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.order}" action="#{orderMB.create()}" />
 			</h:form>
 			<h:outputText id="orderSummary" value="#{orderMB.selectedDishIds}" />
     	</ui:define>

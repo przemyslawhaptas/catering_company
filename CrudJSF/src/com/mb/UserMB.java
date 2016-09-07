@@ -19,7 +19,7 @@ public class UserMB {
     private UserFacade userFacade;
  
     public User getUser(){
-        if(user == null){
+        if (user == null){
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             String userEmail = context.getUserPrincipal().getName();
  
