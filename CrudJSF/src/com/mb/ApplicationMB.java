@@ -3,38 +3,45 @@ package com.mb;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 public class ApplicationMB {
 
     protected void sendInfoMessageToUser(String message){
-        FacesContext context = getContext();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, message));
+    	sendMessageToUser(message, FacesMessage.SEVERITY_INFO);
     }
  
     protected void sendErrorMessageToUser(String message){
-        FacesContext context = getContext();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message));
-    }
- 
-    protected FacesContext getContext() {
-        return FacesContext.getCurrentInstance();
+    	sendMessageToUser(message, FacesMessage.SEVERITY_ERROR);
     }
     
-	protected ExternalContext getExternalContext() {
-		return getContext().getExternalContext();
-	}
+    private void sendMessageToUser(String message, Severity severity) {
+		getContext().addMessage(null, new FacesMessage(severity, message, message));
+    }
     
-    protected void storeInSession(String name, Object object) {
-    	Map<String, Object> sessionMap = getExternalContext().getSessionMap();
-    	
-    	sessionMap.put(name, object);
+    protected void storeInSession(String name, Object object) {    	
+    	getSessionMap().put(name, object);
     }
     
     protected Object restoreFromSession(String name) {
-    	Map<String, Object> sessionMap = getExternalContext().getSessionMap();
-    	
-    	return sessionMap.remove(name);
+    	return getSessionMap().get(name);
+    }
+    
+    protected void removeFromSession(String name) {
+    	getSessionMap().remove(name);
+    }
+    
+    private FacesContext getContext() {
+        return FacesContext.getCurrentInstance();
+    }
+    
+	private ExternalContext getExternalContext() {
+		return getContext().getExternalContext();
+	}
+    
+    private Map<String, Object> getSessionMap() {
+    	return getExternalContext().getSessionMap();
     }
 }
