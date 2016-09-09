@@ -35,7 +35,7 @@
  /* login pages */
 
 body {
-	background-color: #e7e7e7;
+	background-color:#e8ddcb;
 }
 
 .login {
@@ -52,7 +52,7 @@ body {
 .main-panel {	
 	margin-top: 90px;
 	margin-bottom: 90px !important;
-	background-color: #e7e7e7;	
+	background-color: #e8ddcb;	
 }
 
 .login-el {
@@ -64,7 +64,7 @@ body {
 .panel {	
 	margin-top: 30px !important;
 	margin-bottom: 30px !important;
-	background-color: #e7e7e7;	
+	background-color: #e8ddcb;	
 }
 
 .error {
@@ -86,4 +86,8 @@ h1.logo {
 /* payment page */
 .total {
 	text-align: right;
+}
+
+.orderSummaryElement {
+	margin-bottom: 30px;
 }
