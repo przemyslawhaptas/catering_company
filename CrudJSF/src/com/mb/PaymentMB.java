@@ -56,8 +56,8 @@ public class PaymentMB extends ApplicationMB {
 		this.paymentInfo = paymentInfo;
 	}
 
-    public User getUser(){
-        if (user == null){
+    public User getUser() {
+        if (user == null) {
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             String userEmail = context.getUserPrincipal().getName();
  
@@ -74,13 +74,12 @@ public class PaymentMB extends ApplicationMB {
     // Controller methods
 	
 	public String pay() {
-		PaymentInfo paymentInfo = new PaymentInfo(); // -
-//		PaymentInfo paymentInfo = getPaymentInfo();
-//		if (paymentInfo == null) {
-//			sendErrorMessageToUser("Your order cannot be processed. Please add your payment info first.");
-//		
-//			return null;
-//		}
+		PaymentInfo paymentInfo = getPaymentInfo();
+		if (paymentInfo == null) {
+			sendErrorMessageToUser("Your order cannot be processed. Please add your payment info first.");
+		
+			return null;
+		}
 		
 		double price = order.getPrice();
 		removeFromSession("order");

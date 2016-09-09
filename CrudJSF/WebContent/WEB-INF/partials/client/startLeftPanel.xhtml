@@ -10,9 +10,8 @@
 	<ui:composition>
 		<h2>USER</h2>
 		<div class="panel panel-default">
-			<h:link styleClass="btn btn-default btn-lg full-width-btn" value="New Order" outcome="client/newOrder"></h:link>
-			<button type="button" class="btn btn-default btn-lg full-width-btn">Large button</button>
-			<button type="button" class="btn btn-default btn-lg full-width-btn">Large button</button>
+			<h:link styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.newOrder}" outcome="client/newOrder"></h:link>
+			<h:link styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.paymentInfo}" outcome="client/paymentInfo"></h:link>
 		</div>
 	</ui:composition>
 </h:body>

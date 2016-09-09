@@ -15,4 +15,24 @@ public class UserFacadeImp implements UserFacade {
     public User findUserByEmail(String email) {
         return userDAO.findUserByEmail(email);
     }
+    
+    @Override
+    public User update(User user) {
+        validate(user);
+ 
+        return userDAO.update(user);
+    }
+    
+    private void validate(User user){
+        String error = null;
+ 
+        if (user == null){
+            error = "user == null";
+        }
+ 
+        if (error != null){
+            throw new IllegalArgumentException("Validation failed: " + error);
+        }
+    }
+    
 }

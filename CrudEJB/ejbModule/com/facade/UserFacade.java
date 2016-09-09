@@ -7,4 +7,5 @@ import com.model.User;
 @Local
 public interface UserFacade {
     public User findUserByEmail(String email);
+    public User update(User user);
 }
