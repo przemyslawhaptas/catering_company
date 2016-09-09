@@ -44,7 +44,6 @@ public class DishService {
 		
 		Marshaller marshaller = new Marshaller(gson);
 		
-		
 		return Response.status(201).entity(marshaller.toJson(dish)).build();
 	}
 

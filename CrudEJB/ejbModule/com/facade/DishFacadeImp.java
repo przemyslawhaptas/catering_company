@@ -72,6 +72,10 @@ public class DishFacadeImp implements DishFacade {
         if (dish.getQuantity() < 0){
             error = "dish.getQuantity() < 0";
         }
+        
+        if (dish.getPrice() < 0){
+            error = "dish.getPrice() < 0";
+        }
  
         if (error != null){
             throw new IllegalArgumentException("Validation failed: " + error);

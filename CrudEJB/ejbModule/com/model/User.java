@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
  
 @Entity
@@ -25,6 +27,10 @@ public class User {
     private String firstName;
     private String lastName;
  	private String role;
+ 	
+ 	@OneToOne
+ 	@JoinColumn(name = "payment_info_id")
+ 	private PaymentInfo paymentInfo; 
  
     public int getId() {
         return id;
@@ -74,7 +80,17 @@ public class User {
         this.role = role;
     }
  
-    @Override
+    public PaymentInfo getPaymentInfo() {
+		return paymentInfo;
+	}
+    
+
+	public void setPaymentInfo(PaymentInfo paymentInfo) {
+		this.paymentInfo = paymentInfo;
+	}
+	
+
+	@Override
     public int hashCode() {
         return getId();
     }
