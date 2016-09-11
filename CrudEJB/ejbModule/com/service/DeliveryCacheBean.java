@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Singleton;
-import javax.ejb.Stateful;
 
 import com.model.DeliveryInfo;
 
@@ -27,5 +26,18 @@ public class DeliveryCacheBean implements DeliveryCache {
 	@Override
 	public void addDeliveryInfo(DeliveryInfo deliveryInfo) {
 		this.deliveryInfos.add(deliveryInfo);
+	}
+	
+	@Override
+	public void removeDeliveryInfo(int orderId) {
+		DeliveryInfo delivered = null;
+		
+		for (DeliveryInfo info: deliveryInfos) {
+			if (info.getOrderId() == orderId) {
+				delivered = info;
+			}
+		}
+		
+		deliveryInfos.remove(delivered);
 	}
 }

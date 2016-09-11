@@ -12,5 +12,6 @@ public interface DeliveryCache {
 	public List<DeliveryInfo> getDeliveryInfos();
 	public void setDeliveryInfos(List<DeliveryInfo> deliveryInfos);
 	public void addDeliveryInfo(DeliveryInfo deliveryInfo);
+	public void removeDeliveryInfo(int orderId);
 	
 }

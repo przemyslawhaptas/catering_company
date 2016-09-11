@@ -9,9 +9,18 @@
 <h:body>	
 	<ui:composition template="/WEB-INF/layout.xhtml">
     	<ui:define name="content">
+    		<h1>#{msgs.deliveryList}</h1>
        		<h:dataTable value="#{deliveryMB.deliveryInfos}" var="deliveryInfo" styleClass="table" headerClass="tableColumnsHeader" >
 	           	<h:column>
-	                <h2>#{deliveryInfo.orderId}</h2>  
+	                #{deliveryInfo.orderId}  
+	            </h:column>
+  	           	<h:column>
+	                #{deliveryInfo.street} #{deliveryInfo.buildingAndApartmentNumber}  
+	            </h:column>
+   	           	<h:column>
+   	           		<h:form>
+   	           			<h:commandButton styleClass="btn btn-default btn-md" value="#{msgs.delivered}" action="#{deliveryMB.deliver(deliveryInfo.orderId)}" />
+   	           		</h:form>
 	            </h:column>
 	        </h:dataTable>
     	</ui:define>
