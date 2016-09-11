@@ -30,7 +30,11 @@ public class User {
  	
  	@OneToOne
  	@JoinColumn(name = "payment_info_id")
- 	private PaymentInfo paymentInfo; 
+ 	private PaymentInfo paymentInfo;
+ 	
+ 	@OneToOne
+ 	@JoinColumn(name = "address_info_id")
+ 	private AddressInfo addressInfo; 
  
     public int getId() {
         return id;
@@ -82,13 +86,19 @@ public class User {
  
     public PaymentInfo getPaymentInfo() {
 		return paymentInfo;
-	}
-    
+	} 
 
 	public void setPaymentInfo(PaymentInfo paymentInfo) {
 		this.paymentInfo = paymentInfo;
 	}
 	
+    public AddressInfo getAddressInfo() {
+		return addressInfo;
+	} 
+
+	public void setAddressInfo(AddressInfo addressInfo) {
+		this.addressInfo = addressInfo;
+	}
 
 	@Override
     public int hashCode() {

@@ -8,14 +8,14 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import com.facade.PaymentInfoFacade;
+import com.facade.AddressInfoFacade;
 import com.facade.UserFacade;
-import com.model.PaymentInfo;
+import com.model.AddressInfo;
 import com.model.User;
  
 @ManagedBean
 @RequestScoped
-public class PaymentInfoMB extends ApplicationMB {
+public class AddressInfoMB extends ApplicationMB {
 	
 	private static final String MY_ACCOUNT = "myAccount";
 	    
@@ -23,28 +23,28 @@ public class PaymentInfoMB extends ApplicationMB {
     private UserFacade userFacade;
     
     @EJB
-    private PaymentInfoFacade paymentInfoFacade;
+    private AddressInfoFacade addressInfoFacade;
     
-    private PaymentInfo paymentInfo;
+    private AddressInfo addressInfo;
     private User user;
     
     // Property access methods
     	
-	public PaymentInfo getPaymentInfo() {
-		if (paymentInfo == null) {
-			PaymentInfo currentUsersPaymentInfo = getUser().getPaymentInfo();
-			if (currentUsersPaymentInfo == null) {
-				paymentInfo = new PaymentInfo();
+	public AddressInfo getAddressInfo() {
+		if (addressInfo == null) {
+			AddressInfo currentUsersAddressInfo = getUser().getAddressInfo();
+			if (currentUsersAddressInfo == null) {
+				addressInfo = new AddressInfo();
 			} else {
-				paymentInfo = currentUsersPaymentInfo;
+				addressInfo = currentUsersAddressInfo;
 			}
 		}	
 			
-		return paymentInfo;
+		return addressInfo;
 	}
 
-	public void setPaymentInfo(PaymentInfo paymentInfo) {
-		this.paymentInfo = paymentInfo;
+	public void setAddressInfo(AddressInfo addressInfo) {
+		this.addressInfo = addressInfo;
 	}
 
     public User getUser() {
@@ -65,16 +65,16 @@ public class PaymentInfoMB extends ApplicationMB {
 	public String create() {
         try {
         	User user = getUser();
-        	paymentInfo.setUser(user);
-            paymentInfoFacade.save(paymentInfo);
+        	addressInfo.setUser(user);
+            addressInfoFacade.save(addressInfo);
             
-            user.setPaymentInfo(paymentInfo);
+            user.setAddressInfo(addressInfo);
             userFacade.update(user);
         } catch (EJBException e) {
             sendErrorMessageToUser(e.getMessage());         
         }       
  
         return MY_ACCOUNT;
-	}
+	}	
 	
 }

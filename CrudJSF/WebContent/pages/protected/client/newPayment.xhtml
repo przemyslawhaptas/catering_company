@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
@@ -9,27 +9,43 @@
 <h:body>	
 	<ui:composition template="/WEB-INF/layout.xhtml">
     	<ui:define name="content">
-    		<h1>#{msgs.orderSummary}</h1>
-       		<h:dataTable value="#{paymentMB.order.orderedDishes}" var="orderedDish" styleClass="table main-panel" headerClass="tableColumnsHeader" >
-	            <h:column>				 
-	                #{orderedDish.dish.name}
-	            </h:column>
-	            <h:column>
-	            	<h:outputText value="#{orderedDish.dish.price}">
-			 	    	<f:convertNumber currencyCode="USD" type="currency" />
-		 	    	</h:outputText>
-	            </h:column>		 
-	        </h:dataTable>
-	        
-	       	<h2 class="total">
-	       		<h:outputText value="#{msgs.total}: " />
-	       		<h:outputText value="#{paymentMB.order.price}">
-	       			<f:convertNumber currencyCode="USD" type="currency" />
-       			</h:outputText>
-   			</h2>
+    		<div>
+	    		<h1>#{msgs.orderSummary}</h1>
+	       		<h:dataTable value="#{paymentMB.order.orderedDishes}" var="orderedDish" styleClass="table main-panel" headerClass="tableColumnsHeader" >
+		            <h:column>				 
+		                #{orderedDish.dish.name}
+		            </h:column>
+		            <h:column>
+		            	<h:outputText value="#{orderedDish.dish.price}">
+				 	    	<f:convertNumber currencyCode="USD" type="currency" />
+			 	    	</h:outputText>
+		            </h:column>		 
+		        </h:dataTable>
+		        
+		       	<h2 class="total">
+		       		<h:outputText value="#{msgs.total}: " />
+		       		<h:outputText value="#{paymentMB.order.price}">
+		       			<f:convertNumber currencyCode="USD" type="currency" />
+	       			</h:outputText>
+	   			</h2>
+   			</div>
+   			   			
+   			<div class="orderSummaryElement">
+	       		<h2>#{msgs.paymentInfo}</h2>
+				<h:outputText value="#{msgs.bankAccountNumber}: #{paymentInfoMB.paymentInfo.bankAccountNumber}"/>
+				<br />
+				<h:outputText value="#{msgs.authenticationCode}: #{paymentInfoMB.paymentInfo.authenticationCode}" />
+   			</div>
+   			
+   			<div class="orderSummaryElement">
+	       		<h2>#{msgs.addressInfo}</h2>
+	       		<h:outputText value="#{msgs.street}: #{addressInfoMB.addressInfo.street}"/>
+				<br />
+				<h:outputText value="#{msgs.buildingAndApartmentNumber}: #{addressInfoMB.addressInfo.buildingAndApartmentNumber}" />
+   			</div>
    			
    			<h:form>
-				<h:commandButton styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.pay}" action="#{paymentMB.pay()}" />   			
+				<h:commandButton styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.pay}" action="#{paymentMB.pay(addressInfoMB.addressInfo)}" />   			
    			</h:form>
     	</ui:define>
     </ui:composition>

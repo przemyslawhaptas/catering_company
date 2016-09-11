@@ -7,9 +7,11 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
  
+import com.service.DeliverySender;
 import com.ws.client.PaymentServiceClient;
 import com.facade.OrderFacade;
 import com.facade.UserFacade;
+import com.model.AddressInfo;
 import com.model.Order;
 import com.model.PaymentInfo;
 import com.model.User;
@@ -29,6 +31,9 @@ public class PaymentMB extends ApplicationMB {
     private Order order;
     private PaymentInfo paymentInfo;
     private User user;
+    
+    @EJB
+	private DeliverySender deliverySender;
     
     // Property access methods
     
@@ -70,10 +75,10 @@ public class PaymentMB extends ApplicationMB {
 	public void setUser(User user) {
 		this.user = user;
 	}
-    
+
     // Controller methods
 	
-	public String pay() {
+	public String pay(AddressInfo addressInfo) {
 		PaymentInfo paymentInfo = getPaymentInfo();
 		if (paymentInfo == null) {
 			sendErrorMessageToUser("Your order cannot be processed. Please add your payment info first.");
@@ -97,7 +102,13 @@ public class PaymentMB extends ApplicationMB {
 		
 		sendInfoMessageToUser("Payment accepted!");
 		
+		sendDelivery(addressInfo, order.getId());
+		
 		return DELIVERY;
+	}
+	
+	public void sendDelivery(AddressInfo addressInfo, int orderId) {
+		deliverySender.perform(addressInfo, orderId);
 	}
 
 }

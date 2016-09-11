@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+</h:head>
+<h:body>	
+	<ui:composition template="/WEB-INF/layout.xhtml">
+    	<ui:define name="content">
+    		<h1>#{msgs.addressInfo}</h1>
+    		<c:if test="#{empty addressInfoMB.addressInfo.street}">
+    			<h2>#{msgs.addAddressInfo}</h2>
+	   			<h:form>
+	   				<h:outputLabel for="street" value="#{msgs.street}:" />      	
+		            <h:inputText id="street" value="#{addressInfoMB.addressInfo.street}" required="true" requiredMessage="#{msgs.streetRequired}" >
+		            	<f:validateLength minimum="1" maximum="12" />
+	            	</h:inputText>
+	            	<br />
+	            	<h:outputLabel for="buildingAndApartmentNumber" value="#{msgs.buildingAndApartmentNumber}:" />      	
+	            	<h:inputText id="buildingAndApartmentNumber" value="#{addressInfoMB.addressInfo.buildingAndApartmentNumber}" required="true" requiredMessage="#{msgs.buildingAndApartmentNumberRequired}" >
+		            	<f:validateLength minimum="1" maximum="10" />
+	            	</h:inputText>
+					<h:commandButton styleClass="btn btn-default btn-lg full-width-btn" value="#{msgs.add}" action="#{addressInfoMB.create()}" />   			
+	   			</h:form>
+   			</c:if>
+    		<c:if test="#{not empty addressInfoMB.addressInfo.street}">
+				<h:outputText value="#{msgs.street}: #{addressInfoMB.addressInfo.street}"/>
+				<br />
+				<h:outputText value="#{msgs.buildingAndApartmentNumber}: #{addressInfoMB.addressInfo.buildingAndApartmentNumber}" />
+   			</c:if>
+    	</ui:define>
+    </ui:composition>
+</h:body>
+</html>
