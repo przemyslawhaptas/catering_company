@@ -11,6 +11,7 @@
 	<ui:composition template="/WEB-INF/layout.xhtml">
     	<ui:define name="content">
     		<h1>#{msgs.paymentInfo}</h1>
+    		<br/>
     		<c:if test="#{empty paymentInfoMB.paymentInfo.bankAccountNumber}">
     			<h2>#{msgs.addPaymentInfo}</h2>
 	   			<h:form>
@@ -27,9 +28,14 @@
 	   			</h:form>
    			</c:if>
     		<c:if test="#{not empty paymentInfoMB.paymentInfo.bankAccountNumber}">
-				<h:outputText value="#{msgs.bankAccountNumber}: #{paymentInfoMB.paymentInfo.bankAccountNumber}"/>
+				<h3> #{msgs.bankAccountNumber}: #{paymentInfoMB.paymentInfo.bankAccountNumber} </h3>
+				<h3> #{msgs.authenticationCode}: #{paymentInfoMB.paymentInfo.authenticationCode} </h3>
+				
 				<br />
-				<h:outputText value="#{msgs.authenticationCode}: #{paymentInfoMB.paymentInfo.authenticationCode}" />
+				
+	   			<h:form>
+	   				<h:commandButton styleClass="btn btn-default btn-md" value="#{msgs.delete}" action="#{paymentInfoMB.delete()}" />
+				</h:form>
    			</c:if>
     	</ui:define>
     </ui:composition>

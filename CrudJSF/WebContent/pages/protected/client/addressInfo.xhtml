@@ -11,12 +11,13 @@
 	<ui:composition template="/WEB-INF/layout.xhtml">
     	<ui:define name="content">
     		<h1>#{msgs.addressInfo}</h1>
+    		<br />
     		<c:if test="#{empty addressInfoMB.addressInfo.street}">
     			<h2>#{msgs.addAddressInfo}</h2>
 	   			<h:form>
 	   				<h:outputLabel for="street" value="#{msgs.street}:" />      	
 		            <h:inputText id="street" value="#{addressInfoMB.addressInfo.street}" required="true" requiredMessage="#{msgs.streetRequired}" >
-		            	<f:validateLength minimum="1" maximum="12" />
+		            	<f:validateLength minimum="1" maximum="25" />
 	            	</h:inputText>
 	            	<br />
 	            	<h:outputLabel for="buildingAndApartmentNumber" value="#{msgs.buildingAndApartmentNumber}:" />      	
@@ -27,9 +28,14 @@
 	   			</h:form>
    			</c:if>
     		<c:if test="#{not empty addressInfoMB.addressInfo.street}">
-				<h:outputText value="#{msgs.street}: #{addressInfoMB.addressInfo.street}"/>
+				<h3> #{msgs.street}: #{addressInfoMB.addressInfo.street} </h3>
+				<h3> #{msgs.buildingAndApartmentNumber}: #{addressInfoMB.addressInfo.buildingAndApartmentNumber} </h3>
+				
 				<br />
-				<h:outputText value="#{msgs.buildingAndApartmentNumber}: #{addressInfoMB.addressInfo.buildingAndApartmentNumber}" />
+				
+	   			<h:form>
+	   				<h:commandButton styleClass="btn btn-default btn-md" value="#{msgs.delete}" action="#{addressInfoMB.delete()}" />
+				</h:form>
    			</c:if>
     	</ui:define>
     </ui:composition>

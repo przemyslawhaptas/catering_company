@@ -20,7 +20,7 @@ import com.model.User;
 @RequestScoped
 public class PaymentMB extends ApplicationMB {
 	
-    private static final String DELIVERY = "newDelivery";
+    private static final String START = "start";
     
     @EJB
     private UserFacade userFacade;
@@ -100,11 +100,12 @@ public class PaymentMB extends ApplicationMB {
 		order.setStatus(Order.STATUSES[1]);
 		orderFacade.update(order);
 		
-		sendInfoMessageToUser("Payment accepted!");
+		int estimatedTime = (int) (Math.random() * 100);
+		sendInfoMessageToUser("Payment accepted! Estimated delivery time: " + estimatedTime + " minutes. Bon apetit!");
 		
 		sendDelivery(addressInfo, order.getId());
 		
-		return DELIVERY;
+		return START;
 	}
 	
 	public void sendDelivery(AddressInfo addressInfo, int orderId) {

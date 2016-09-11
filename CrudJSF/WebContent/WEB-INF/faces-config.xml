@@ -25,37 +25,28 @@
     </navigation-rule>
     <navigation-rule>
         <navigation-case>
-            <from-outcome>listAllDogs
-            </from-outcome>
-            <to-view-id>/pages/protected/client/listAllDogs.xhtml
+            <from-outcome>start</from-outcome>
+            <to-view-id>/pages/protected/start.xhtml
             </to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <navigation-case>
-            <from-outcome>createDog
-            </from-outcome>
-            <to-view-id>/pages/protected/admin/createDog.xhtml
+            <from-outcome>addressInfo</from-outcome>
+            <to-view-id>/pages/protected/client/addressInfo.xhtml
             </to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <navigation-case>
-            <from-outcome>updateDog
-            </from-outcome>
-            <to-view-id>/pages/protected/admin/updateDog.xhtml
+            <from-outcome>paymentInfo</from-outcome>
+            <to-view-id>/pages/protected/client/paymentInfo.xhtml
             </to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>deleteDog
-            </from-outcome>
-            <to-view-id>/pages/protected/admin/deleteDog.xhtml
-            </to-view-id>
-        </navigation-case>
-    </navigation-rule>
+   
     <application>
         <resource-bundle>
             <base-name>messages

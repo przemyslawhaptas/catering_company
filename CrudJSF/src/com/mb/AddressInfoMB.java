@@ -17,7 +17,7 @@ import com.model.User;
 @RequestScoped
 public class AddressInfoMB extends ApplicationMB {
 	
-	private static final String MY_ACCOUNT = "myAccount";
+	private static final String ADDRESS_INFO = "addressInfo";
 	    
     @EJB
     private UserFacade userFacade;
@@ -74,7 +74,20 @@ public class AddressInfoMB extends ApplicationMB {
             sendErrorMessageToUser(e.getMessage());         
         }       
  
-        return MY_ACCOUNT;
+        return ADDRESS_INFO;
 	}	
 	
+	public String delete() {
+        try {
+        	User user = getUser();
+            user.setAddressInfo(null);
+            userFacade.update(user);
+            
+            addressInfoFacade.delete(addressInfo);
+        } catch (EJBException e) {
+            sendErrorMessageToUser(e.getMessage());         
+        }
+        
+        return ADDRESS_INFO;
+	}
 }

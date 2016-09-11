@@ -1,3 +1,4 @@
+
 package com.mb;
   
 import javax.ejb.EJB;
@@ -17,7 +18,7 @@ import com.model.User;
 @RequestScoped
 public class PaymentInfoMB extends ApplicationMB {
 	
-	private static final String MY_ACCOUNT = "myAccount";
+	private static final String PAYMENT_INFO = "paymentInfo";
 	    
     @EJB
     private UserFacade userFacade;
@@ -74,7 +75,21 @@ public class PaymentInfoMB extends ApplicationMB {
             sendErrorMessageToUser(e.getMessage());         
         }       
  
-        return MY_ACCOUNT;
+        return PAYMENT_INFO;
+	}
+	
+	public String delete() {
+        try {
+        	User user = getUser();
+            user.setPaymentInfo(null);
+            userFacade.update(user);
+            
+            paymentInfoFacade.delete(paymentInfo);
+        } catch (EJBException e) {
+            sendErrorMessageToUser(e.getMessage());         
+        }
+        
+        return PAYMENT_INFO;
 	}
 	
 }

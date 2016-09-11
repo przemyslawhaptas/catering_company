@@ -11,7 +11,7 @@ import com.model.AddressInfo;
 @Stateless
 public class AddressInfoFacadeImp implements AddressInfoFacade {
 	
-	private static final int STREET_MAX_LENGTH = 12;
+	private static final int STREET_MAX_LENGTH = 25;
 	private static final int BUILDING_AND_APARTMENT_NUMBER_MAX_LENGTH = 10;
  
     @EJB

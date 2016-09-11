@@ -95,9 +95,6 @@
         <role-name>MANAGER</role-name>
     </security-role>
     <security-role>
-        <role-name>STAFF</role-name>
-    </security-role>
-    <security-role>
         <role-name>DELIVERY</role-name>
     </security-role>
 </web-app>
