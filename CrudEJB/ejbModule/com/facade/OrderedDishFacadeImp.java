@@ -42,6 +42,11 @@ public class OrderedDishFacadeImp implements OrderedDishFacade {
     public List<OrderedDish> findAll() {
         return orderedDishDAO.findAll();
     }
+    
+    @Override
+    public List<OrderedDish> getBestsellers() {
+    	return orderedDishDAO.getBestsellers();
+    }
 
     private void validate(OrderedDish orderedDish){
         String error = null;

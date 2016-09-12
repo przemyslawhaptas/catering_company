@@ -18,5 +18,7 @@ public interface OrderedDishFacade {
     public abstract OrderedDish find(int entityID);
  
     public abstract List<OrderedDish> findAll();
+    
+    public abstract List<OrderedDish> getBestsellers();
 
 }

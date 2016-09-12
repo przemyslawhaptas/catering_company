@@ -1,5 +1,7 @@
 package com.dao;
  
+import java.util.List;
+
 import javax.ejb.Stateless;
  
 import com.model.OrderedDish;
@@ -11,4 +13,7 @@ public class OrderedDishDAO extends GenericDAO<OrderedDish> {
         super(OrderedDish.class);
     }
     
+    public List<OrderedDish> getBestsellers() {
+    	return super.findManyResults(OrderedDish.GET_BESTSELLERS, null);
+    }
 }
