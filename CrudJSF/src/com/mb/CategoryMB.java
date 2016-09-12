@@ -75,4 +75,9 @@ public class CategoryMB extends ApplicationMB {
  
         return MENU;
     }
+    
+    public void deleteCategory(int categoryId) {
+    	Category category = categoryFacade.find(categoryId);
+    	categoryFacade.delete(category);
+    }
 }

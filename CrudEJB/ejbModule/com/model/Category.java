@@ -29,7 +29,7 @@ public class Category {
     private String name;
     
     @Expose
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", orphanRemoval = true)
     private List<Dish> dishes;
  
     public int getId() {

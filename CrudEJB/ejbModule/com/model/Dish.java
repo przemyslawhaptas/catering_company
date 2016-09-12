@@ -35,7 +35,7 @@ public class Dish {
     @JoinColumn(name = "category_id")
     private Category category;
     
-    @OneToMany(mappedBy = "dish")
+    @OneToMany(mappedBy = "dish", orphanRemoval = true)
     private List<OrderedDish> orderedDishes;
     
     @Expose

@@ -63,4 +63,9 @@ public class DishMB extends ApplicationMB {
  
         return MENU;
     }
+    
+    public void deleteDish(int dishId) {
+    	Dish dish = dishFacade.find(dishId);
+    	dishFacade.delete(dish);
+    }
 }

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ORDERED_DISHES")
 @NamedQuery(name = "OrderedDish.getBestsellers", 
-	query = "SELECT count(*) AS number, dish.name FROM OrderedDish ordered JOIN ordered.dish dish GROUP BY dish.name ORDER BY number DESC, dish.name ASC LIMIT 3")
+	query = "SELECT count(*) AS number, dish.name FROM OrderedDish ordered JOIN ordered.dish dish GROUP BY dish.name ORDER BY number DESC, dish.name ASC LIMIT 1")
 public class OrderedDish {
 	
 	public static final String GET_BESTSELLERS = "OrderedDish.getBestsellers";

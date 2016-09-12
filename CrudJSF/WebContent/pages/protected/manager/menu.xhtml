@@ -11,7 +11,12 @@
     	<ui:define name="content">
        		<h:dataTable value="#{categoryMB.menu}" var="category" styleClass="table" headerClass="tableColumnsHeader" >
 	           	<h:column>
-	                <h1>#{category.name}</h1>
+	                
+	                <h:form>
+	                	<h:commandButton value="#{msgs.delete}" action="#{categoryMB.deleteCategory(category.id)}" /> 
+	                </h:form>
+	                <h2>#{category.name}</h2>
+	                
 	 				<h:dataTable value="#{category.dishes}" var="categoryDish" styleClass="table" headerClass="tableColumnsHeader" rowClasses="tableFirstLine,tableNextLine" >
 			            <h:column>				 
 			                #{categoryDish.name}
@@ -20,6 +25,11 @@
 			            	<h:outputText value="#{categoryDish.price}">
       				 	    	<f:convertNumber currencyCode="USD" type="currency" />
   				 	    	</h:outputText>
+			            </h:column>	            
+   			            <h:column>				 
+			                <h:form>
+			                	<h:commandButton value="#{msgs.delete}" action="#{dishMB.deleteDish(categoryDish.id)}" /> 
+			                </h:form>
 			            </h:column>
        				</h:dataTable>     
 	            </h:column>
