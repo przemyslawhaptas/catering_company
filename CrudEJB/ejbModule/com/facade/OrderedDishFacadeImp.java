@@ -45,7 +45,7 @@ public class OrderedDishFacadeImp implements OrderedDishFacade {
     
     @Override
     public List<OrderedDish> getBestsellers() {
-    	return orderedDishDAO.getBestsellers();
+    	return orderedDishDAO.getBestsellers(OrderedDish.BESTSELLERS_LIMIT);
     }
 
     private void validate(OrderedDish orderedDish){

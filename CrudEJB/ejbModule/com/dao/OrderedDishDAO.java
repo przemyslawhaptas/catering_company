@@ -13,7 +13,7 @@ public class OrderedDishDAO extends GenericDAO<OrderedDish> {
         super(OrderedDish.class);
     }
     
-    public List<OrderedDish> getBestsellers() {
-    	return super.findManyResults(OrderedDish.GET_BESTSELLERS, null);
+    public List<OrderedDish> getBestsellers(int limit) {
+    	return super.findManyResults(OrderedDish.GET_BESTSELLERS, null, limit);
     }
 }

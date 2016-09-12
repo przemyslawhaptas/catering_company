@@ -79,7 +79,7 @@ public abstract class GenericDAO<T> {
     // Using the unchecked because JPA does not have a
     // ery.getSingleResult()<T> method
     @SuppressWarnings("unchecked")
-    protected List<T> findManyResults(String namedQuery, Map<String, Object> parameters) {
+    protected List<T> findManyResults(String namedQuery, Map<String, Object> parameters, int limit) {
         List<T> results = null; //TOO: check if not "List"
  
         try {
@@ -89,15 +89,23 @@ public abstract class GenericDAO<T> {
             if (parameters != null && !parameters.isEmpty()) {
                 populateQueryParameters(query, parameters);
             }
+            
+            if (limit != -1) {
+            	query = query.setMaxResults(limit);
+            }
  
             results = query.getResultList();
- 
+            
         } catch (Exception e) {
             System.out.println("Error while running query: " + e.getMessage());
             e.printStackTrace();
         }
  
         return results;
+    }
+    
+    protected List<T> findManyResults(String namedQuery, Map<String, Object> parameters) {
+    	return findManyResults(namedQuery, parameters, -1);
     }
     
     // Using the unchecked because JPA does not have a
